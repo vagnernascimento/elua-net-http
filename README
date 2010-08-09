@@ -1,0 +1,18 @@
+HTTP/1.1 client support over eLua net module 
+Inspired in Lua socket.http
+Author: Vagner Nascimento, July 2010
+Led Lab - PUC-Rio, Brazil
+
+Accepts parameters: url, method, source, headers, bytes
+
+Returns a table: {body = 'response body', code = 200, headers = 'All response headers'} or {err = 'something is going wrong'}
+Usage:  
+	GET -->	http.request{url = 'http://ww.myfavoritehost.com/folder/script.lua?q=anything'}
+	POST -->http.request{url = 'http://ww.myfavoritehost.com/script.lua', method = 'POST', source = 'first=1&more=in+ltn12+format', bytes = 50}
+
+*Extra: Encodes a string into its escaped hexadecimal representation.
+		http.escape("my strange / string") --> my%20strange%20%2f%20string
+
+
+*  Because of eLua net module limitations, the default bytes returned is 512. if you need more or less, just define a number of bytes on the input table parameters.
+
